@@ -27,13 +27,15 @@ export class Pencil {
     }
 
     private updateDegradation(char: string) {
-        let charDegradeAmount = (char.toLowerCase() === char) ? 1 : 2
-        this._props.degrade -= charDegradeAmount
+        this._props.degrade -= Pencil.charDegrade(char)
     }
 
     private pencilCanWrite(char: string): boolean {
-        let charDegradeAmount = (char.toLowerCase() === char) ? 1 : 2
-        return this._props.degrade - charDegradeAmount >= 0
+        return this._props.degrade - Pencil.charDegrade(char) >= 0
+    }
+
+    private static charDegrade(char: string): number {
+        return (char.toLowerCase() === char) ? 1 : 2
     }
 }
 
