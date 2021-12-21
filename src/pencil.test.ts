@@ -46,5 +46,11 @@ describe('Pencil', () => {
 
             expect(pencil.text).toEqual('Prof  ')
         })
+
+        it('does not degrade pencil when writing spaces', () => {
+            pencil.write('a plan')
+
+            expect(pencil.text).toEqual('a plan')
+        })
     })
 })
