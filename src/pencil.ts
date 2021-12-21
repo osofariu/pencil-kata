@@ -28,7 +28,7 @@ export class Pencil {
 
     public sharpen() {
         if (this._props.sharpen > 0) {
-            this._props.degrade = this._origDegrade
+            this.restoreDegradation()
             this._props.sharpen -= 1
         }
     }
@@ -43,6 +43,10 @@ export class Pencil {
 
     private updateDegradation(char: string) {
         this._props.degrade -= Pencil.charDegrade(char)
+    }
+
+    private restoreDegradation() {
+        this._props.degrade = this._origDegrade
     }
 
     private pencilCanWrite(char: string): boolean {
