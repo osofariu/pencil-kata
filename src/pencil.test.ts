@@ -94,5 +94,12 @@ describe('Pencil', () => {
 
             expect(pencil.text).toEqual('This       is mine')
         })
+
+        it('erases last instance of text previously written', () => {
+            pencil.write('This apple is my apple')
+            pencil.erase('apple')
+
+            expect(pencil.text).toEqual('This apple is my      ')
+        })
     })
 })
