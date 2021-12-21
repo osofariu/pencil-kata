@@ -1,6 +1,7 @@
 export type PencilProps = {
     degrade: number
     sharpen: number
+    erase: number
 }
 
 export class Pencil {
@@ -38,10 +39,10 @@ export class Pencil {
         let reverse = (str: string) => str.split('').reverse().join('')
 
         let textReversed = reverse(this._text)
-        let inputReversed = reverse(input)
-        let updatedTextReversed = textReversed.replace(inputReversed, stringOfSpaces(inputReversed.length))
+        let inputReversed = reverse(input).substring(0, this._props.erase)
+        let newTextReversed = textReversed.replace(inputReversed, stringOfSpaces(inputReversed.length))
 
-        this._text = reverse(updatedTextReversed)
+        this._text = reverse(newTextReversed)
     }
 
     private writeChar(char: string) {
