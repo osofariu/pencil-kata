@@ -113,6 +113,15 @@ describe('Pencil', () => {
 
                 expect(pencil.text).toEqual('This acco      is mine')
             })
+
+            it('keeps track of eraser wear', () => {
+                pencil.write("oh oh oh")
+                pencil.erase("oh")
+                pencil.erase("oh")
+                pencil.erase("oh")
+
+                expect(pencil.text).toEqual("o       ")
+            })
         })
     })
 })
