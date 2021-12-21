@@ -5,12 +5,12 @@ export class Pencil {
 
     public write(input: string) {
         input.split('').map(char => {
-            if (this.pencilCanWrite()) {
+            if (this.pencilCanWrite(char)) {
                 this.writeChar(char)
             } else {
                 this.writeSpace()
             }
-            this.updateDegradation()
+            this.updateDegradation(char)
         })
     }
 
@@ -26,12 +26,14 @@ export class Pencil {
         this._text += ' '
     }
 
-    private updateDegradation() {
-        this._props.degrade -= 1
+    private updateDegradation(char: string) {
+        let charDegradeAmount = (char.toLowerCase() === char) ? 1 : 2
+        this._props.degrade -= charDegradeAmount
     }
 
-    private pencilCanWrite(): boolean {
-        return this._props.degrade > 0
+    private pencilCanWrite(char: string): boolean {
+        let charDegradeAmount = (char.toLowerCase() === char) ? 1 : 2
+        return this._props.degrade - charDegradeAmount >= 0
     }
 }
 
