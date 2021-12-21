@@ -20,4 +20,11 @@ describe('Pencil', () => {
         expect(pencil.text).toEqual('hello')
 
     })
+
+    it('writes text multiple times', () => {
+        pencil.write('Hello')
+        pencil.write(' there')
+
+        expect(pencil.text).toEqual('Hello there')
+    })
 })
