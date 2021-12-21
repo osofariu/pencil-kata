@@ -6,11 +6,10 @@ describe('Pencil', () => {
     describe('writes text', () => {
 
         beforeEach(() => {
-            pencil = new Pencil()
+            pencil = new Pencil({degrade: 15})
         })
 
         it('writes nothing when no text was given', () => {
-            const pencil = new Pencil()
             pencil.write('')
 
             expect(pencil.text).toEqual('')
