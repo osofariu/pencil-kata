@@ -35,8 +35,13 @@ export class Pencil {
 
     public erase(input: string) {
         let stringOfSpaces = (n: number) => ' '.repeat(n)
-        let updatedText = this._text.replace(input, stringOfSpaces(input.length))
-        this._text = updatedText
+        let reverse = (str: string) => str.split('').reverse().join('')
+
+        let textReversed = reverse(this._text)
+        let inputReversed = reverse(input)
+        let updatedTextReversed = textReversed.replace(inputReversed, stringOfSpaces(inputReversed.length))
+
+        this._text = reverse(updatedTextReversed)
     }
 
     private writeChar(char: string) {
