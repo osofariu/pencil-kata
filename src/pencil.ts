@@ -1,10 +1,11 @@
 export type PencilProps = {
     degrade: number
+    sharpen: number
 }
 
 export class Pencil {
     private _text = ''
-    private _origDegrade
+    private readonly _origDegrade
 
     public constructor(private _props: PencilProps) {
         this._origDegrade = _props.degrade
@@ -26,7 +27,10 @@ export class Pencil {
     }
 
     public sharpen() {
-        this._props.degrade = this._origDegrade
+        if (this._props.sharpen > 0) {
+            this._props.degrade = this._origDegrade
+            this._props.sharpen -= 1
+        }
     }
 
     private writeChar(char: string) {
