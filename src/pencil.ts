@@ -35,7 +35,11 @@ export class Pencil {
     }
 
     private static charDegrade(char: string): number {
-        return (char.toLowerCase() === char) ? 1 : 2
+        if (char === ' ') {
+            return 0
+        } else {
+            return (char.toLowerCase() === char) ? 1 : 2
+        }
     }
 }
 
