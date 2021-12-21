@@ -52,5 +52,11 @@ describe('Pencil', () => {
 
             expect(pencil.text).toEqual('a plan')
         })
+
+        it('does not degrade pencil when writing newline characters', () => {
+            pencil.write('a\nplan')
+
+            expect(pencil.text).toEqual('a\nplan')
+        })
     })
 })
