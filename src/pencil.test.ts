@@ -1,3 +1,5 @@
+import {Pencil} from "./pencil";
+
 describe('Pencil', () => {
 
     it('writes nothing when no text was given', () => {
