@@ -44,6 +44,7 @@ export class Pencil {
         const newTextReversed = textReversed.replace(erasableInputReversed, stringOfSpaces(erasableInputReversed.length))
 
         this._text = reverse(newTextReversed)
+        this._props.erase -= erasableInputReversed.length
     }
 
     private writeChar(char: string) {
