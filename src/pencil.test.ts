@@ -59,4 +59,17 @@ describe('Pencil', () => {
             expect(pencil.text).toEqual('a\nplan')
         })
     })
+    describe('Sharpen', () => {
+        beforeEach(() => {
+            pencil = new Pencil({degrade: 5})
+        })
+
+        it('able to write new text after sharpening', () => {
+            pencil.write('table')
+            pencil.sharpen()
+            pencil.write(' wines')
+
+            expect(pencil.text).toEqual('table wines')
+        })
+    })
 })
