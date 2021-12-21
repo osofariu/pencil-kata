@@ -40,5 +40,11 @@ describe('Pencil', () => {
 
             expect(pencil.text).toEqual('profi ')
         })
+
+        it('degrades by two points for UPPERCASE letters', () => {
+            pencil.write('Profit')
+
+            expect(pencil.text).toEqual('Prof  ')
+        })
     })
 })
