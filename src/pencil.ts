@@ -33,6 +33,12 @@ export class Pencil {
         }
     }
 
+    public erase(input: string) {
+        let stringOfSpaces = (n: number) => ' '.repeat(n)
+        let updatedText = this._text.replace(input, stringOfSpaces(input.length))
+        this._text = updatedText
+    }
+
     private writeChar(char: string) {
         this._text += char
     }
