@@ -6,7 +6,7 @@ describe('Pencil', () => {
     describe('writes text', () => {
 
         beforeEach(() => {
-            pencil = new Pencil({degrade: 15})
+            pencil = new Pencil({degrade: 15, sharpen: 0})
         })
 
         it('writes nothing when no text was given', () => {
@@ -32,7 +32,7 @@ describe('Pencil', () => {
 
     describe('Point degradation', () => {
         beforeEach(() => {
-            pencil = new Pencil({degrade: 5})
+            pencil = new Pencil({degrade: 5, sharpen: 0})
         })
 
         it('degrades by one point for lowercase letters and stops writing', () => {
@@ -57,6 +57,19 @@ describe('Pencil', () => {
             pencil.write('a\nplan')
 
             expect(pencil.text).toEqual('a\nplan')
+        })
+    })
+    describe('Sharpen', () => {
+        beforeEach(() => {
+            pencil = new Pencil({degrade: 5, sharpen: 1})
+        })
+
+        it('able to write new text after sharpening', () => {
+            pencil.write('table')
+            pencil.sharpen()
+            pencil.write(' wines')
+
+            expect(pencil.text).toEqual('table wines')
         })
     })
 })
