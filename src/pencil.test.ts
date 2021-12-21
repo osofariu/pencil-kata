@@ -4,7 +4,6 @@ describe('Pencil', () => {
     let pencil: Pencil
 
     describe('writes text', () => {
-
         beforeEach(() => {
             pencil = new Pencil({degrade: 15, sharpen: 0})
         })
@@ -59,6 +58,7 @@ describe('Pencil', () => {
             expect(pencil.text).toEqual('a\nplan')
         })
     })
+
     describe('Sharpen', () => {
         beforeEach(() => {
             pencil = new Pencil({degrade: 5, sharpen: 1})
@@ -80,6 +80,19 @@ describe('Pencil', () => {
             pencil.write(' ok')
 
             expect(pencil.text).toEqual('table wine o ')
+        })
+    })
+
+    describe('Erase', () => {
+        beforeEach(() => {
+            pencil = new Pencil({degrade: 25, sharpen: 0})
+        })
+
+        it('erases text previously written', () => {
+            pencil.write('This apple is mine')
+            pencil.erase('apple')
+
+            expect(pencil.text).toEqual('This       is mine')
         })
     })
 })
