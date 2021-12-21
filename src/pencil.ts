@@ -1,7 +1,14 @@
+export type PencilProps = {
+    degrade: number
+}
+
 export class Pencil {
     private _text = ''
+    private _origDegrade
 
-    public constructor(private _props: PencilProps) {}
+    public constructor(private _props: PencilProps) {
+        this._origDegrade = _props.degrade
+    }
 
     public write(input: string) {
         input.split('').map(char => {
@@ -16,6 +23,10 @@ export class Pencil {
 
     public get text() {
         return this._text
+    }
+
+    public sharpen() {
+        this._props.degrade = this._origDegrade
     }
 
     private writeChar(char: string) {
@@ -43,6 +54,3 @@ export class Pencil {
     }
 }
 
-export type PencilProps = {
-    degrade: number
-}
