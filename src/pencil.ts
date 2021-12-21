@@ -1,8 +1,11 @@
 export class Pencil {
+    private _text = ''
 
-    public write(input: string) {}
+    public write(input: string) {
+        this._text = input
+    }
 
     public get text() {
-        return ''
+        return this._text
     }
 }
