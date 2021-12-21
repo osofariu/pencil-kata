@@ -5,7 +5,7 @@ describe('Pencil', () => {
 
     describe('writes text', () => {
         beforeEach(() => {
-            pencil = new Pencil({degrade: 15, sharpen: 0})
+            pencil = new Pencil({degrade: 15, sharpen: 0, erase: 0})
         })
 
         it('writes nothing when no text was given', () => {
@@ -31,7 +31,7 @@ describe('Pencil', () => {
 
     describe('Point degradation', () => {
         beforeEach(() => {
-            pencil = new Pencil({degrade: 5, sharpen: 0})
+            pencil = new Pencil({degrade: 5, sharpen: 0, erase: 0})
         })
 
         it('degrades by one point for lowercase letters and stops writing', () => {
@@ -61,7 +61,7 @@ describe('Pencil', () => {
 
     describe('Sharpen', () => {
         beforeEach(() => {
-            pencil = new Pencil({degrade: 5, sharpen: 1})
+            pencil = new Pencil({degrade: 5, sharpen: 1, erase: 0})
         })
 
         it('able to write new text after sharpening', () => {
@@ -85,7 +85,7 @@ describe('Pencil', () => {
 
     describe('Erase', () => {
         beforeEach(() => {
-            pencil = new Pencil({degrade: 25, sharpen: 0})
+            pencil = new Pencil({degrade: 25, sharpen: 0, erase: 5})
         })
 
         it('erases text previously written', () => {
@@ -100,6 +100,19 @@ describe('Pencil', () => {
             pencil.erase('apple')
 
             expect(pencil.text).toEqual('This apple is my      ')
+        })
+
+        describe('until eraser runs out', () => {
+            beforeEach(() => {
+                pencil = new Pencil({degrade: 25, sharpen: 0, erase: 5})
+            })
+
+            it('stops erasing after eraser runs out', () => {
+                pencil.write('This accordion is mine')
+                pencil.erase('accordion')
+
+                expect(pencil.text).toEqual('This     rdion is mine')
+            })
         })
     })
 })
