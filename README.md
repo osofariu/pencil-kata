@@ -1,8 +1,18 @@
-# Working with the Project
+# Setup
+
+* Install node (16 or later is good)
+
+* Install Vscode (editor of choice)
+
+* Install git
+
+# Working with the Skeleton code
 
 This is a skeleton for a typescript project.
 
-`yarn build`
+`npm install -g yarn`
+
+`yarn`
 
 then run tests:
 
